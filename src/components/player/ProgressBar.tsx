@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Box, Slider, Typography } from '@mui/material';
 import { usePlayer } from '../../contexts/PlayerContext';
 

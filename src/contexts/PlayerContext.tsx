@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
-import { PlayerState, Song } from '../types';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import type { ReactNode } from 'react';
+import type { PlayerState, Song } from '../types';
 import { audioPlayer } from '../services/player/audioPlayer';
 
 interface PlayerContextType {

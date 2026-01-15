@@ -1,4 +1,4 @@
-import { ServerConfig } from '../../types';
+import type { ServerConfig } from '../../types';
 import { generateRandomString, generateAuthToken } from '../../utils/crypto';
 
 export interface AuthParams {

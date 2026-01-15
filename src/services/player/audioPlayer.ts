@@ -1,4 +1,4 @@
-import { Song } from '../../types';
+import type { Song } from '../../types';
 import { navidromeAPI } from '../navidrome/api';
 import { db } from '../db/database';
 

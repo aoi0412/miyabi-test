@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {
   List,
   ListItem,
@@ -14,7 +14,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import DownloadIcon from '@mui/icons-material/Download';
 import OfflinePinIcon from '@mui/icons-material/OfflinePin';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
-import { Song } from '../../types';
+import type { Song } from '../../types';
 import { navidromeAPI } from '../../services/navidrome/api';
 import { useOffline } from '../../contexts/OfflineContext';
 

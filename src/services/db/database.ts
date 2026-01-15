@@ -1,5 +1,6 @@
-import Dexie, { Table } from 'dexie';
-import { OfflineSong, Song } from '../../types';
+import Dexie from 'dexie';
+import type { Table } from 'dexie';
+import type { OfflineSong, Song } from '../../types';
 
 export class MiyabiDatabase extends Dexie {
   offlineSongs!: Table<OfflineSong, string>;

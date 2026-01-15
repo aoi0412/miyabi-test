@@ -1,4 +1,4 @@
-import { ServerConfig } from '../types';
+import type { ServerConfig } from '../types';
 
 const SERVER_CONFIG_KEY = 'miyabi_server_config';
 

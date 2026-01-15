@@ -1,6 +1,5 @@
-import React from 'react';
+
 import {
-  Grid,
   Card,
   CardMedia,
   CardContent,
@@ -8,7 +7,7 @@ import {
   CardActionArea,
   Box
 } from '@mui/material';
-import { Album } from '../../types';
+import type { Album } from '../../types';
 import { navidromeAPI } from '../../services/navidrome/api';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 
@@ -26,9 +25,20 @@ export function AlbumGrid({ albums, onAlbumClick }: AlbumGridProps) {
   };
 
   return (
-    <Grid container spacing={2}>
+    <Box
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: {
+          xs: 'repeat(2, 1fr)',
+          sm: 'repeat(3, 1fr)',
+          md: 'repeat(4, 1fr)',
+          lg: 'repeat(6, 1fr)'
+        },
+        gap: 2
+      }}
+    >
       {albums.map((album) => (
-        <Grid item xs={6} sm={4} md={3} lg={2} key={album.id}>
+        <Box key={album.id}>
           <Card>
             <CardActionArea onClick={() => onAlbumClick(album)}>
               {album.coverArt ? (
@@ -72,8 +82,8 @@ export function AlbumGrid({ albums, onAlbumClick }: AlbumGridProps) {
               </CardContent>
             </CardActionArea>
           </Card>
-        </Grid>
+        </Box>
       ))}
-    </Grid>
+    </Box>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Box, Paper, Typography, Avatar } from '@mui/material';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import { usePlayer } from '../../contexts/PlayerContext';

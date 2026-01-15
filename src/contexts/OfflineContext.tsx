@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Song, DownloadProgress } from '../types';
+import { createContext, useContext, useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
+import type { Song, DownloadProgress } from '../types';
 import { db } from '../services/db/database';
 import { navidromeAPI } from '../services/navidrome/api';
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ThemeProvider, createTheme, CssBaseline, CircularProgress, Box } from '@mui/material';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { PlayerProvider } from './contexts/PlayerContext';
@@ -9,7 +9,7 @@ import { AlbumGrid } from './components/library/AlbumGrid';
 import { SongList } from './components/library/SongList';
 import { OfflineLibrary } from './components/offline/OfflineLibrary';
 import { navidromeAPI } from './services/navidrome/api';
-import { Album, Song } from './types';
+import type { Album, Song } from './types';
 import { usePlayer } from './contexts/PlayerContext';
 
 const theme = createTheme({
