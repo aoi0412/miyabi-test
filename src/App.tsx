@@ -8,6 +8,7 @@ import { AppLayout } from './components/layout/AppLayout';
 import { AlbumGrid } from './components/library/AlbumGrid';
 import { SongList } from './components/library/SongList';
 import { OfflineLibrary } from './components/offline/OfflineLibrary';
+import { NowPlayingVinyl } from './components/vinyl/NowPlayingVinyl';
 import { navidromeAPI } from './services/navidrome/api';
 import type { Album, Song } from './types';
 import { usePlayer } from './contexts/PlayerContext';
@@ -23,12 +24,13 @@ const theme = createTheme({
 
 function MainApp() {
   const { authState, isLoading } = useAuth();
-  const { playSong, addToQueue } = usePlayer();
+  const { playSong, addToQueue, playerState } = usePlayer();
   const [currentPage, setCurrentPage] = useState('albums');
   const [albums, setAlbums] = useState<Album[]>([]);
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
   const [albumSongs, setAlbumSongs] = useState<Song[]>([]);
   const [loading, setLoading] = useState(false);
+  const [showNowPlaying, setShowNowPlaying] = useState(false);
 
   useEffect(() => {
     if (authState.isAuthenticated && currentPage === 'albums') {
@@ -66,7 +68,15 @@ function MainApp() {
     if (selectedAlbum && albumSongs.length > 0) {
       addToQueue(albumSongs);
     }
+    setShowNowPlaying(true);
   };
+
+  // Show Now Playing screen when song starts
+  useEffect(() => {
+    if (playerState.currentSong && !showNowPlaying) {
+      setShowNowPlaying(true);
+    }
+  }, [playerState.currentSong]);
 
   const handleBackToAlbums = () => {
     setSelectedAlbum(null);
@@ -90,6 +100,11 @@ function MainApp() {
 
   if (!authState.isAuthenticated) {
     return <ServerSettings open={true} />;
+  }
+
+  // Show Now Playing screen
+  if (showNowPlaying && playerState.currentSong) {
+    return <NowPlayingVinyl />;
   }
 
   const getPageTitle = () => {
@@ -135,10 +150,15 @@ function MainApp() {
     <AppLayout
       title={getPageTitle()}
       onNavigate={(page) => {
-        setCurrentPage(page);
-        handleBackToAlbums();
+        if (page === 'nowplaying' && playerState.currentSong) {
+          setShowNowPlaying(true);
+        } else {
+          setShowNowPlaying(false);
+          setCurrentPage(page);
+          handleBackToAlbums();
+        }
       }}
-      currentPage={currentPage}
+      currentPage={showNowPlaying ? 'nowplaying' : currentPage}
     >
       {renderContent()}
     </AppLayout>
