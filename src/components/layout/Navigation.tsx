@@ -14,6 +14,7 @@ import AlbumIcon from '@mui/icons-material/Album';
 import PersonIcon from '@mui/icons-material/Person';
 import OfflinePinIcon from '@mui/icons-material/OfflinePin';
 import SettingsIcon from '@mui/icons-material/Settings';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
 
 const drawerWidth = 240;
 
@@ -31,6 +32,7 @@ export function Navigation({
   currentPage
 }: NavigationProps) {
   const menuItems = [
+    { id: 'nowplaying', label: 'Now Playing', icon: <MusicNoteIcon /> },
     { id: 'albums', label: 'アルバム', icon: <AlbumIcon /> },
     { id: 'artists', label: 'アーティスト', icon: <PersonIcon /> },
     { id: 'offline', label: 'オフライン', icon: <OfflinePinIcon /> },
